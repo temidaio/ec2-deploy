@@ -3,6 +3,8 @@ set -eo pipefail
 
 CMD="${INPUT_RUN/$'\n'/' && '}"
 
+INPUT_PORT=${INPUT_PORT:-"22"}
+
 function main() {
     configSSHAccessKey
 

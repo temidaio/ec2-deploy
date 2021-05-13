@@ -7,7 +7,6 @@ inputs:
     required: true
   port:
     required: false
-    default: 22
   user:
     required: true
   key:
