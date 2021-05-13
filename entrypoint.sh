@@ -29,8 +29,10 @@ function ssh-command() {
 }
 
 function scp() {
-  echo "$INPUT_SOURCE"
-  scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"
+  ls -l
+  ls -l app
+  ls -l app/
+  #scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"
 }
 
 main "$@"
