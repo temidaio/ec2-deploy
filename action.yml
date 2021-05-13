@@ -1,5 +1,4 @@
 name: SSH Command
-runs:
 inputs:
   action:
     required: true
