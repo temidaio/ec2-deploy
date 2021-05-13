@@ -20,12 +20,3 @@ inputs:
   runs:
     using: 'docker'
     image: 'Dockerfile'
-    args:
-      ACTION: ${{ inputs.action }}
-      HOST: ${{ inputs.host }}
-      PORT: ${{ inputs.port }}
-      USER: ${{ inputs.user }}
-      KEY: ${{ inputs.key }}
-      SCRIPT: ${{ inputs.script }}
-      SOURCE: ${{ inputs.source }}
-      TARGET: ${{ inputs.target }}
