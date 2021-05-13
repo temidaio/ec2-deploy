@@ -3,8 +3,8 @@ set -eo pipefail
 
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 
-INPUT_PORT=${INPUT_PORT:-"22"}
-INPUT_TARGET=${INPUT_TARGET:-"."}
+#INPUT_PORT=${INPUT_PORT:-"22"}
+#INPUT_TARGET=${INPUT_TARGET:-"."}
 
 function main() {
     configSSHAccessKey
@@ -12,7 +12,7 @@ function main() {
   if [ "$INPUT_ACTION" == "scp" ]; then
     copy-files
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
-    ssh-command
+    sshCommand
   else
     echo "Unexpected actions"
   fi
@@ -24,13 +24,13 @@ function configSSHAccessKey() {
   chmod 0400 "/root/.ssh/id_rsa"
 }
 
-function ssh-command() {
+function sshCommand() {
   ssh -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
     "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
 }
 
-function copy-files() {
+function copyFiles() {
   scp -o StrictHostKeyChecking=no \
     -P "${INPUT_PORT}" \
     -r "${INPUT_SOURCE}" \
