@@ -1,0 +1,23 @@
+name: SSH Command
+inputs:
+  host:
+    required: true
+  port:
+    required: true
+    default: 22
+  user:
+    required: true
+  key:
+    required: true
+  run:
+    required: true
+  runs-on: ubuntu-latest
+  runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    env:
+      HOST: ${{ inputs.host }}
+      PORT: ${{ inputs.port }}
+      USER: ${{ inputs.user }}
+      KEY: ${{ inputs.key }}
+      RUN: ${{ inputs.run }}
