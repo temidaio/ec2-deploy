@@ -9,9 +9,9 @@ INPUT_TARGET=${INPUT_TARGET:"."}
 function main() {
     configSSHAccessKey
 
-  if [ "${INPUT_ACTION}" == "scp" ]; then
+  if [ "$INPUT_ACTION" == "scp" ]; then
     scp
-  elif [ "${INPUT_ACTION}" == "ssh-command" ]; then
+  elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     ssh-command
   else
     echo "Unexpected actions"
@@ -29,8 +29,8 @@ function ssh-command() {
 }
 
 function scp() {
-  echo 'scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"'
-  #scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" app "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"
+  echo `scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"`
+  #scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"
 }
 
 main "$@"
