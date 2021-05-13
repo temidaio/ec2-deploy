@@ -1,5 +1,6 @@
 #!/bin/bash
 set -eo pipefail
+#set -x
 
 CMD="${INPUT_RUN/$'\n'/' && '}"
 
@@ -8,8 +9,10 @@ function main() {
 
   if [ "${INPUT_ACTION}" == "scp" ]; then
     scp
-  elif [ "${INPUT_ACTION}" == "scp" ]; then
+  elif [ "${INPUT_ACTION}" == "ssh-command" ]; then
     ssh-command
+  else
+    echo "Unexpected actions"
   fi
 }
 
