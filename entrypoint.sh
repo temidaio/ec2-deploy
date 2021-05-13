@@ -23,6 +23,8 @@ function configSSHAccessKey() {
 }
 
 function ssh-command() {
+  echo "${INPUT_USER}"
+  echo "${INPUT_PORT}"
   ssh -v -o StrictHostKeyChecking=no -p "$INPUT_PORT" "$INPUT_USER"@"$INPUT_HOST" "$CMD"
 }
 
