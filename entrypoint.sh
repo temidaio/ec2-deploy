@@ -11,7 +11,7 @@ function main() {
     configSSHAccessKey
 
   if [ "$INPUT_ACTION" == "scp" ]; then
-    scp -r -o StrictHostKeyChecking=no -P "${INPUT_PORT}" "${INPUT_SOURCE}" ec2-user@3.250.28.11:.
+    scp -r -o StrictHostKeyChecking=no -P "${INPUT_PORT}" "${INPUT_SOURCE}" "${INPUT_USER}"@"${INPUT_HOST}":.
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     ssh-command
   else
