@@ -4,7 +4,7 @@ set -eo pipefail
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 
 INPUT_PORT=${INPUT_PORT:-"22"}
-INPUT_TARGET=${INPUT_TARGET:"."}
+INPUT_TARGET=${INPUT_TARGET:-"."}
 
 function main() {
     configSSHAccessKey
@@ -29,8 +29,7 @@ function ssh-command() {
 }
 
 function scp() {
-  echo `scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"`
-  #scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"
+  scp -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"
 }
 
 main "$@"
