@@ -6,5 +6,4 @@ RUN apk add  --no-cache \
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
-RUN cat /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

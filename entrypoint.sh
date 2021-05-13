@@ -11,7 +11,6 @@ function main() {
 
   if [ "$INPUT_ACTION" == "scp" ]; then
     copy-files
-    #scp -r -o StrictHostKeyChecking=no -P "${INPUT_PORT}" "${INPUT_SOURCE}" "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     ssh-command
   else
