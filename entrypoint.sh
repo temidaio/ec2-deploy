@@ -36,7 +36,7 @@ function scp() {
   #  -P "${INPUT_PORT}" \
   #  -r "${INPUT_SOURCE}" \
   #  "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
-  scp -r -o StrictHostKeyChecking=no -P 22 app ec2-user@3.250.28.11:.
+  scp -r -o StrictHostKeyChecking=no -P 23 app ec2-user@3.250.28.11:.
 }
 
 main "$@"
