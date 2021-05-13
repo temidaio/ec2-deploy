@@ -10,7 +10,7 @@ function main() {
     configSSHAccessKey
 
   if [ "$INPUT_ACTION" == "scp" ]; then
-    copy-files
+    copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     sshCommand
   else
