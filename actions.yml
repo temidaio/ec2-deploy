@@ -1,5 +1,8 @@
 name: SSH Command
 inputs:
+  action:
+    required: true
+    description: 'Command list: scp, ssh-command'
   host:
     required: true
   port:
@@ -9,15 +12,16 @@ inputs:
     required: true
   key:
     required: true
-  run:
-    required: true
+  script:
+    required: false
   runs-on: ubuntu-latest
   runs:
     using: 'docker'
     image: 'Dockerfile'
     env:
+      ACTION: ${{ inputs.action }}
       HOST: ${{ inputs.host }}
       PORT: ${{ inputs.port }}
       USER: ${{ inputs.user }}
       KEY: ${{ inputs.key }}
-      RUN: ${{ inputs.run }}
+      SCRIPT: ${{ inputs.script }}
