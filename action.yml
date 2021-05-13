@@ -17,6 +17,6 @@ inputs:
     required: false
   target:
     required: false
-  runs:
-    using: 'docker'
-    image: 'Dockerfile'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
