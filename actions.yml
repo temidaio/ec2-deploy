@@ -13,6 +13,10 @@ inputs:
     required: true
   script:
     required: false
+  source:
+    required: false
+  target:
+    required: false
   runs-on: ubuntu-latest
   runs:
     using: 'docker'
@@ -24,3 +28,5 @@ inputs:
       USER: ${{ inputs.user }}
       KEY: ${{ inputs.key }}
       SCRIPT: ${{ inputs.script }}
+      SOURCE: ${{ inputs.source }}
+      TARGET: ${{ inputs.target }}
