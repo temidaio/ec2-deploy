@@ -14,9 +14,9 @@ function main() {
 }
 
 function configSSHAccessKey() {
-  mkdir "~/.ssh"
+  mkdir "/root/.ssh"
   echo "$INPUT_KEY" > "/root/.ssh/id_rsa"
-  chmod 0400 "~/.ssh/id_rsa"
+  chmod 0400 "/root/.ssh/id_rsa"
 }
 
 function ssh-command() {
