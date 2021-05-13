@@ -21,7 +21,7 @@ function main() {
 
 function configSSHAccessKey() {
   mkdir "/root/.ssh"
-  echo "$INPUT_KEY" > "/root/.ssh/id_rsa"
+  echo -e "${INPUT_KEY}" > "/root/.ssh/id_rsa"
   chmod 0400 "/root/.ssh/id_rsa"
 }
 
@@ -30,7 +30,11 @@ function ssh-command() {
 }
 
 function scp() {
-  scp -v -r -o StrictHostKeyChecking=no -P "$INPUT_PORT" "$INPUT_SOURCE" "$INPUT_USER"@"$INPUT_HOST":"$INPUT_TARGET"
+  # shellcheck disable=SC2264
+  scp -o StrictHostKeyChecking=no \
+    -P "${INPUT_PORT}" \
+    -r "${INPUT_SOURCE}" \
+    "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
 }
 
 main "$@"
