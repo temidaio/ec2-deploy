@@ -1,4 +1,5 @@
 name: SSH Command
+runs:
 inputs:
   action:
     required: true
@@ -20,7 +21,7 @@ inputs:
   runs:
     using: 'docker'
     image: 'Dockerfile'
-    env:
+    args:
       ACTION: ${{ inputs.action }}
       HOST: ${{ inputs.host }}
       PORT: ${{ inputs.port }}
