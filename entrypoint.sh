@@ -1,6 +1,5 @@
 #!/bin/bash
 set -eo pipefail
-#set -ex
 
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 
