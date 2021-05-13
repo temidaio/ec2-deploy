@@ -1,10 +1,7 @@
 #!/bin/bash
-set -eo pipefail
+set -o pipefail
 
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
-
-#INPUT_PORT=${INPUT_PORT:-"22"}
-#INPUT_TARGET=${INPUT_TARGET:-"."}
 
 function main() {
     configSSHAccessKey
