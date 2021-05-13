@@ -4,7 +4,7 @@ set -o pipefail
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 
 function main() {
-    configSSHAccessKey
+  configSSHAccessKey
 
   if [ "$INPUT_ACTION" == "scp" ]; then
     copyFiles
@@ -13,6 +13,8 @@ function main() {
   else
     echo "Unexpected actions"
   fi
+
+  cleanContainer
 }
 
 function configSSHAccessKey() {
@@ -32,6 +34,10 @@ function copyFiles() {
     -P "${INPUT_PORT}" \
     -r "${INPUT_SOURCE}" \
     "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
+}
+
+function cleanContainer() {
+  rm -f "/root/.ssh/id_rsa"
 }
 
 main "$@"
