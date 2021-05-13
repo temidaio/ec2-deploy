@@ -6,7 +6,7 @@ inputs:
   host:
     required: true
   port:
-    required: true
+    required: false
     default: 22
   user:
     required: true
