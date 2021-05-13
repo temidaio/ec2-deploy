@@ -2,8 +2,7 @@ FROM alpine:latest
 
 RUN apk add  --no-cache \
     bash \
-    openssh \
-    scp
+    openssh
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
