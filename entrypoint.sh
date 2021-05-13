@@ -26,15 +26,17 @@ function configSSHAccessKey() {
 }
 
 function ssh-command() {
-  ssh -o StrictHostKeyChecking=no -p "$INPUT_PORT" "$INPUT_USER"@"$INPUT_HOST" "$CMD"
+  ssh -o StrictHostKeyChecking=no \
+    -p "${INPUT_PORT}" \
+    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
 }
 
 function scp() {
-  # shellcheck disable=SC2264
-  scp -o StrictHostKeyChecking=no \
-    -P "${INPUT_PORT}" \
-    -r "${INPUT_SOURCE}" \
-    "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
+  #scp -o StrictHostKeyChecking=no \
+  #  -P "${INPUT_PORT}" \
+  #  -r "${INPUT_SOURCE}" \
+  #  "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
+  scp -r -o StrictHostKeyChecking=no -P 22 app ec2-user@3.250.28.11:.
 }
 
 main "$@"
