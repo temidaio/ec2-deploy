@@ -11,7 +11,8 @@ function main() {
     configSSHAccessKey
 
   if [ "$INPUT_ACTION" == "scp" ]; then
-    scp -r -o StrictHostKeyChecking=no -P "${INPUT_PORT}" "${INPUT_SOURCE}" "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
+    copy-files
+    #scp -r -o StrictHostKeyChecking=no -P "${INPUT_PORT}" "${INPUT_SOURCE}" "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     ssh-command
   else
@@ -31,12 +32,11 @@ function ssh-command() {
     "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
 }
 
-#function scp() {
-#  #scp -o StrictHostKeyChecking=no \
-#  #  -P "${INPUT_PORT}" \
-#  #  -r "${INPUT_SOURCE}" \
-#  #  "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
-#  scp -r -o StrictHostKeyChecking=no -P 23 app ec2-user@3.250.28.11:.
-#}
+function copy-files() {
+  scp -o StrictHostKeyChecking=no \
+    -P "${INPUT_PORT}" \
+    -r "${INPUT_SOURCE}" \
+    "${INPUT_USER}"@"${INPUT_HOST}":"${INPUT_TARGET}"
+}
 
 main "$@"
