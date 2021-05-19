@@ -43,11 +43,4 @@ function cleanContainer() {
   rm -f "/root/.ssh/id_rsa"
 }
 
-#function exitCode() {
-#  if <condition> ; then
-#  echo "Game over!"
-#  exit 1
-#fi
-#}
-
 main "$@"
