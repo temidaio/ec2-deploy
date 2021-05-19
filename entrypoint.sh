@@ -10,8 +10,8 @@ function main() {
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     sshCommand
-    echo $?
-    if [ `echo $?` != 0 ] ; then
+    exit=$(echo $?)
+    if [ $exit != 0 ] ; then
       echo "Game over!"
       exit 1
     fi
