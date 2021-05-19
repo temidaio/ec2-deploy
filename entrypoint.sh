@@ -10,7 +10,10 @@ function main() {
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     sshCommand
-    echo $?
+    if $? != 0 ; then
+      echo "Game over!"
+      exit 1
+    fi
   else
     echo "Unexpected actions"
   fi
