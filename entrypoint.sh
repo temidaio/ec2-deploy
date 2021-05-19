@@ -29,7 +29,6 @@ function sshCommand() {
   ssh -t -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
     "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
-    echo $?
 }
 
 function copyFiles() {
