@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o pipefail
+#set -o pipefail
 
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 
@@ -26,7 +26,7 @@ function configSSHAccessKey() {
 function sshCommand() {
   trap "ssh -t -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
-    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"'" EXIT
+    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"" EXIT
 }
 
 function copyFiles() {
