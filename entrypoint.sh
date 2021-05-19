@@ -11,7 +11,7 @@ function main() {
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     sshCommand
     echo $?
-    if [ $? != 0 ] ; then
+    if [ `echo $?` != 0 ] ; then
       echo "Game over!"
       exit 1
     fi
