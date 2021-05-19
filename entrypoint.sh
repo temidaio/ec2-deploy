@@ -10,6 +10,9 @@ function main() {
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     sshCommand
+    if [ $(echo $?) != 0 ] ; then
+      exit 1
+    fi
   else
     echo "Unexpected actions"
   fi
@@ -24,7 +27,7 @@ function configSSHAccessKey() {
 }
 
 function sshCommand() {
-  ssh -o StrictHostKeyChecking=no \
+  ssh -t -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
     "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
 }
