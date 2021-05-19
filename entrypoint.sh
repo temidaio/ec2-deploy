@@ -24,9 +24,9 @@ function configSSHAccessKey() {
 }
 
 function sshCommand() {
-  ssh -o StrictHostKeyChecking=no \
+  ssh -t -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
-    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}" EXIT
+    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
 }
 
 function copyFiles() {
