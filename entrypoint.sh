@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -o pipefail
+set -o pipefail
 
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 
@@ -14,7 +14,9 @@ function main() {
     echo "Unexpected actions"
   fi
 
+
   cleanContainer
+  echo $?
 }
 
 function configSSHAccessKey() {
@@ -24,9 +26,9 @@ function configSSHAccessKey() {
 }
 
 function sshCommand() {
-  trap "ssh -t -o StrictHostKeyChecking=no \
+  ssh -t -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
-    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"" EXIT
+    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
 }
 
 function copyFiles() {
@@ -39,5 +41,12 @@ function copyFiles() {
 function cleanContainer() {
   rm -f "/root/.ssh/id_rsa"
 }
+
+#function exitCode() {
+#  if <condition> ; then
+#  echo "Game over!"
+#  exit 1
+#fi
+#}
 
 main "$@"
