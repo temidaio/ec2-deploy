@@ -9,7 +9,7 @@ function main() {
   if [ "$INPUT_ACTION" == "scp" ]; then
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
-    sshCommand
+    trap sshCommand EXIT
   else
     echo "Unexpected actions"
   fi
@@ -26,7 +26,7 @@ function configSSHAccessKey() {
 function sshCommand() {
   ssh -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
-    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
+    "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}" EXIT
 }
 
 function copyFiles() {
