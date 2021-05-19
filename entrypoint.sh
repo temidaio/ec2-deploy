@@ -10,13 +10,13 @@ function main() {
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     sshCommand
+    echo $?
   else
     echo "Unexpected actions"
   fi
 
 
   cleanContainer
-  echo $?
 }
 
 function configSSHAccessKey() {
@@ -29,6 +29,7 @@ function sshCommand() {
   ssh -t -o StrictHostKeyChecking=no \
     -p "${INPUT_PORT}" \
     "${INPUT_USER}"@"${INPUT_HOST}" "${CMD}"
+    echo $?
 }
 
 function copyFiles() {
