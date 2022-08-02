@@ -1,7 +1,17 @@
 #!/bin/bash
 set -o pipefail
 
-CMD="${INPUT_SCRIPT/$'\n'/' && '}"
+#CMD="${INPUT_SCRIPT/$'\n'/' && '}"
+if [ ! -z "$INPUT_ENV" ]; then
+  for VAR in $INPUT_ENS; do
+    VARS="$VARS, export $VAR;"
+  done
+  echo $VARS
+
+  #CMD="export ${INPUT_SCRIPT/$'\n'/' && '}"
+else
+  CMD="${INPUT_SCRIPT/$'\n'/' && '}"
+fi
 
 function main() {
   configSSHAccessKey
