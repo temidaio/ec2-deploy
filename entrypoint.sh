@@ -1,14 +1,13 @@
 #!/bin/bash
 set -o pipefail
 
-#CMD="${INPUT_SCRIPT/$'\n'/' && '}"
-if [ ! -z "$INPUT_ENV" ]; then
-  for VAR in $INPUT_ENS; do
-    VARS="$VARS, export $VAR;"
-  done
-  echo $VARS
+VARS="${INPUT_VARIABLES/$'\n'/'; '}"
 
-  #CMD="export ${INPUT_SCRIPT/$'\n'/' && '}"
+if [ ! -z "$VARS" ]; then
+  for var in $VARS; do
+    ENV_VARS="$ENV_VARS export $var"
+  done
+  CMD="${ENV_VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
 else
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 fi

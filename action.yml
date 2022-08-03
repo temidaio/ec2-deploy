@@ -19,7 +19,7 @@ inputs:
   target:
     required: false
     default: '.'
-  env:
+  variables:
     required: false
 runs:
   using: 'docker'
